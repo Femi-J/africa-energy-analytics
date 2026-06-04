@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_4af2f4b8aae1538d49c6afc1ee3031ff {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 30px; left: 30px; z-index: 1000;
+     background: white; padding: 15px; border-radius: 8px;
+     border: 1px solid #ccc; font-family: Arial; font-size: 13px;
+     box-shadow: 2px 2px 6px rgba(0,0,0,0.2);">
+    <b style="font-size:14px;">Climate Zone</b><br><br>
+    <span style="color:#ff6b35;">●</span> Desert/Arid<br>
+    <span style="color:#f7c948;">●</span> Sahel<br>
+    <span style="color:#00c27c;">●</span> Savanna<br>
+    <span style="color:#0099ff;">●</span> Coastal Humid<br><br>
+    <b style="font-size:14px;">Circle Size</b><br>
+    <span style="font-size:11px; color:#666;">Proportional to annual GHI</span>
+</div>
+    
+            <div class="folium-map" id="map_4af2f4b8aae1538d49c6afc1ee3031ff" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_4af2f4b8aae1538d49c6afc1ee3031ff = L.map(
+                "map_4af2f4b8aae1538d49c6afc1ee3031ff",
+                {
+                    center: [12.0, -5.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ecf342b460bde25074d8089e9d665edc = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ecf342b460bde25074d8089e9d665edc.addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var circle_marker_83beb8ed0c49771403130f9984a45bff = L.circleMarker(
+                [5.36, -4.0083],
+                {"bubblingMouseEvents": true, "color": "#0099ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0099ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.039999999999999, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_9c6849a31c299e441093fc17b62f4efa = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_d052ff6bf3a06f9d0601b65bb049998f = $(`<div id="html_d052ff6bf3a06f9d0601b65bb049998f" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #0099ff; margin-bottom: 5px;">             Abidjan, Cote d'Ivoire         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>4.630 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Coastal Humid</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#16 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_9c6849a31c299e441093fc17b62f4efa.setContent(html_d052ff6bf3a06f9d0601b65bb049998f);
+            
+        
+
+        circle_marker_83beb8ed0c49771403130f9984a45bff.bindPopup(popup_9c6849a31c299e441093fc17b62f4efa)
+        ;
+
+        
+    
+    
+            circle_marker_83beb8ed0c49771403130f9984a45bff.bindTooltip(
+                `<div>
+                     Abidjan — 4.63 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e75b354f44ce9e5d2f058f2e5088a2bc = L.marker(
+                [5.36, -4.0083],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_e1e5ded0d3264a863ac9f01e4b9fae8d = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eAbidjan\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_e75b354f44ce9e5d2f058f2e5088a2bc.setIcon(div_icon_e1e5ded0d3264a863ac9f01e4b9fae8d);
+            
+    
+            var circle_marker_10867af245573c5ca7cdd733f22cd6e7 = L.circleMarker(
+                [9.0765, 7.3986],
+                {"bubblingMouseEvents": true, "color": "#00c27c", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00c27c", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.152000000000001, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_f06aad6c5868ac187537292227d64e05 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_86d1b0464b3c89d8ebcacaef139e9577 = $(`<div id="html_86d1b0464b3c89d8ebcacaef139e9577" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #00c27c; margin-bottom: 5px;">             Abuja, Nigeria         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>5.269 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Savanna</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#11 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_f06aad6c5868ac187537292227d64e05.setContent(html_86d1b0464b3c89d8ebcacaef139e9577);
+            
+        
+
+        circle_marker_10867af245573c5ca7cdd733f22cd6e7.bindPopup(popup_f06aad6c5868ac187537292227d64e05)
+        ;
+
+        
+    
+    
+            circle_marker_10867af245573c5ca7cdd733f22cd6e7.bindTooltip(
+                `<div>
+                     Abuja — 5.27 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ed53ba95d1d606dfefbd8591f669b2f9 = L.marker(
+                [9.0765, 7.3986],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_7001b99ab17ca6428a467774aec4dcf6 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eAbuja\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_ed53ba95d1d606dfefbd8591f669b2f9.setIcon(div_icon_7001b99ab17ca6428a467774aec4dcf6);
+            
+    
+            var circle_marker_424cf6532fe455fd49167bed55c11d2e = L.circleMarker(
+                [5.6037, -0.187],
+                {"bubblingMouseEvents": true, "color": "#0099ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0099ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.072000000000003, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_486182c0216bce10487963267e764b19 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_fabd31cc96fea5110a4c3938f9290686 = $(`<div id="html_fabd31cc96fea5110a4c3938f9290686" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #0099ff; margin-bottom: 5px;">             Accra, Ghana         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>4.884 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Coastal Humid</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#13 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_486182c0216bce10487963267e764b19.setContent(html_fabd31cc96fea5110a4c3938f9290686);
+            
+        
+
+        circle_marker_424cf6532fe455fd49167bed55c11d2e.bindPopup(popup_486182c0216bce10487963267e764b19)
+        ;
+
+        
+    
+    
+            circle_marker_424cf6532fe455fd49167bed55c11d2e.bindTooltip(
+                `<div>
+                     Accra — 4.88 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_0e6912ad9577679e6fa859ae69acdd95 = L.marker(
+                [5.6037, -0.187],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_bcd52fc295f02cc3164d91121928a657 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eAccra\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_0e6912ad9577679e6fa859ae69acdd95.setIcon(div_icon_bcd52fc295f02cc3164d91121928a657);
+            
+    
+            var circle_marker_3614fbb8a0980eff9f60e2d0fd956875 = L.circleMarker(
+                [12.6392, -8.0029],
+                {"bubblingMouseEvents": true, "color": "#f7c948", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f7c948", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.439999999999998, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_ada8b37dbb921ea7febdce291979b792 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_c82045153687fe17ca58dd5d20208399 = $(`<div id="html_c82045153687fe17ca58dd5d20208399" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #f7c948; margin-bottom: 5px;">             Bamako, Mali         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>5.805 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Sahel</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#6 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_ada8b37dbb921ea7febdce291979b792.setContent(html_c82045153687fe17ca58dd5d20208399);
+            
+        
+
+        circle_marker_3614fbb8a0980eff9f60e2d0fd956875.bindPopup(popup_ada8b37dbb921ea7febdce291979b792)
+        ;
+
+        
+    
+    
+            circle_marker_3614fbb8a0980eff9f60e2d0fd956875.bindTooltip(
+                `<div>
+                     Bamako — 5.80 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e49ea4cbb42a307bfd03445f860a47f0 = L.marker(
+                [12.6392, -8.0029],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_1def55d460e34b16662552755461bb91 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eBamako\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_e49ea4cbb42a307bfd03445f860a47f0.setIcon(div_icon_1def55d460e34b16662552755461bb91);
+            
+    
+            var circle_marker_ac1a4bfa579a1155c7e27444e9ebac31 = L.circleMarker(
+                [13.4549, -16.579],
+                {"bubblingMouseEvents": true, "color": "#f7c948", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f7c948", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.207999999999998, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_350d00fb8b262895c3a2d6ec4155ac98 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_5785ab907408bf19a9f4c97ffd2cb20e = $(`<div id="html_5785ab907408bf19a9f4c97ffd2cb20e" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #f7c948; margin-bottom: 5px;">             Banjul, Gambia         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>5.776 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Sahel</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#8 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_350d00fb8b262895c3a2d6ec4155ac98.setContent(html_5785ab907408bf19a9f4c97ffd2cb20e);
+            
+        
+
+        circle_marker_ac1a4bfa579a1155c7e27444e9ebac31.bindPopup(popup_350d00fb8b262895c3a2d6ec4155ac98)
+        ;
+
+        
+    
+    
+            circle_marker_ac1a4bfa579a1155c7e27444e9ebac31.bindTooltip(
+                `<div>
+                     Banjul — 5.78 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_9ce8cacacea6e508050ae332e30439fb = L.marker(
+                [13.4549, -16.579],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_f9470298f56c74aa3c2c86e1cd36f103 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eBanjul\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_9ce8cacacea6e508050ae332e30439fb.setIcon(div_icon_f9470298f56c74aa3c2c86e1cd36f103);
+            
+    
+            var circle_marker_da19137bd8af0b6c1b388b058b788574 = L.circleMarker(
+                [11.8636, -15.5977],
+                {"bubblingMouseEvents": true, "color": "#0099ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0099ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.024000000000001, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_4af6887e9af8c2e011c4b37e494d8184 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_f915bac9d811b47974d1489e27391e20 = $(`<div id="html_f915bac9d811b47974d1489e27391e20" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #0099ff; margin-bottom: 5px;">             Bissau, Guinea-Bissau         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>5.503 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Coastal Humid</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#9 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_4af6887e9af8c2e011c4b37e494d8184.setContent(html_f915bac9d811b47974d1489e27391e20);
+            
+        
+
+        circle_marker_da19137bd8af0b6c1b388b058b788574.bindPopup(popup_4af6887e9af8c2e011c4b37e494d8184)
+        ;
+
+        
+    
+    
+            circle_marker_da19137bd8af0b6c1b388b058b788574.bindTooltip(
+                `<div>
+                     Bissau — 5.50 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_1ff271ac6638cb71b9456a603396a9d2 = L.marker(
+                [11.8636, -15.5977],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_97065fab5cc309be4f02a638094fff54 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eBissau\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_1ff271ac6638cb71b9456a603396a9d2.setIcon(div_icon_97065fab5cc309be4f02a638094fff54);
+            
+    
+            var circle_marker_35efec2a28d39e967ab3d8976f6ae895 = L.circleMarker(
+                [9.6412, -13.5784],
+                {"bubblingMouseEvents": true, "color": "#0099ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0099ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.183999999999997, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_40c0af5ad73c238fef6a7ceea4137641 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_d502ec1e8296fc3deaab955b323663f7 = $(`<div id="html_d502ec1e8296fc3deaab955b323663f7" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #0099ff; margin-bottom: 5px;">             Conakry, Guinea         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>5.273 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Coastal Humid</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#10 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_40c0af5ad73c238fef6a7ceea4137641.setContent(html_d502ec1e8296fc3deaab955b323663f7);
+            
+        
+
+        circle_marker_35efec2a28d39e967ab3d8976f6ae895.bindPopup(popup_40c0af5ad73c238fef6a7ceea4137641)
+        ;
+
+        
+    
+    
+            circle_marker_35efec2a28d39e967ab3d8976f6ae895.bindTooltip(
+                `<div>
+                     Conakry — 5.27 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_0337b6d7e0a18cd436d23cd7e3c90ece = L.marker(
+                [9.6412, -13.5784],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_5172a67df6a9793ff6490a1aa1a0e1eb = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eConakry\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_0337b6d7e0a18cd436d23cd7e3c90ece.setIcon(div_icon_5172a67df6a9793ff6490a1aa1a0e1eb);
+            
+    
+            var circle_marker_a75c430ec695b1c0873fcfcc1e1e41ae = L.circleMarker(
+                [6.3654, 2.4183],
+                {"bubblingMouseEvents": true, "color": "#0099ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0099ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.136000000000003, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_e15ed0bd337e2debe2ac98e30e8b9089 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_525de42dd16aa1bcc38740af62344194 = $(`<div id="html_525de42dd16aa1bcc38740af62344194" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #0099ff; margin-bottom: 5px;">             Cotonou, Benin         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>4.642 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Coastal Humid</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#15 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_e15ed0bd337e2debe2ac98e30e8b9089.setContent(html_525de42dd16aa1bcc38740af62344194);
+            
+        
+
+        circle_marker_a75c430ec695b1c0873fcfcc1e1e41ae.bindPopup(popup_e15ed0bd337e2debe2ac98e30e8b9089)
+        ;
+
+        
+    
+    
+            circle_marker_a75c430ec695b1c0873fcfcc1e1e41ae.bindTooltip(
+                `<div>
+                     Cotonou — 4.64 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2608c50f2bbc5fd4ef2225857f6769fe = L.marker(
+                [6.3654, 2.4183],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_792b1c4b299d07aa82ad46c580a5f9f3 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eCotonou\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_2608c50f2bbc5fd4ef2225857f6769fe.setIcon(div_icon_792b1c4b299d07aa82ad46c580a5f9f3);
+            
+    
+            var circle_marker_dc456242f4e03612c9ee06461e2e1e99 = L.circleMarker(
+                [14.7167, -17.4677],
+                {"bubblingMouseEvents": true, "color": "#f7c948", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f7c948", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.351999999999997, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_0bd2ddbcab1c5404e4bc0255b0228ec1 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_ea68017f1308e0d2db56e04ef2260493 = $(`<div id="html_ea68017f1308e0d2db56e04ef2260493" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #f7c948; margin-bottom: 5px;">             Dakar, Senegal         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>5.794 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Sahel</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#7 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_0bd2ddbcab1c5404e4bc0255b0228ec1.setContent(html_ea68017f1308e0d2db56e04ef2260493);
+            
+        
+
+        circle_marker_dc456242f4e03612c9ee06461e2e1e99.bindPopup(popup_0bd2ddbcab1c5404e4bc0255b0228ec1)
+        ;
+
+        
+    
+    
+            circle_marker_dc456242f4e03612c9ee06461e2e1e99.bindTooltip(
+                `<div>
+                     Dakar — 5.79 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_26b7881ece14d19a64ac3a054e9a230d = L.marker(
+                [14.7167, -17.4677],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_4a59596c44732f8b5e5cbf9d3e82792b = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eDakar\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_26b7881ece14d19a64ac3a054e9a230d.setIcon(div_icon_4a59596c44732f8b5e5cbf9d3e82792b);
+            
+    
+            var circle_marker_1aa4cad779fff94661a3ab3d50d0a059 = L.circleMarker(
+                [8.4657, -13.2317],
+                {"bubblingMouseEvents": true, "color": "#0099ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0099ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.655999999999999, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_f92d59cec0b113d44b261fc962480b96 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_f07dd11aa5f3cf16da2ece4489477064 = $(`<div id="html_f07dd11aa5f3cf16da2ece4489477064" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #0099ff; margin-bottom: 5px;">             Freetown, Sierra Leone         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>4.957 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Coastal Humid</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#12 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_f92d59cec0b113d44b261fc962480b96.setContent(html_f07dd11aa5f3cf16da2ece4489477064);
+            
+        
+
+        circle_marker_1aa4cad779fff94661a3ab3d50d0a059.bindPopup(popup_f92d59cec0b113d44b261fc962480b96)
+        ;
+
+        
+    
+    
+            circle_marker_1aa4cad779fff94661a3ab3d50d0a059.bindTooltip(
+                `<div>
+                     Freetown — 4.96 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_1cdaa991984bef77bdbbd22af1fa397c = L.marker(
+                [8.4657, -13.2317],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_d7f70458f33fdfa25bb774e6a950e1aa = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eFreetown\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_1cdaa991984bef77bdbbd22af1fa397c.setIcon(div_icon_d7f70458f33fdfa25bb774e6a950e1aa);
+            
+    
+            var circle_marker_b3fd8065f4115346e71762a6c3aa461a = L.circleMarker(
+                [12.0022, 8.592],
+                {"bubblingMouseEvents": true, "color": "#f7c948", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f7c948", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.783999999999999, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_c6982b40b31b78e34d781457146db15b = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_abb2c91305858c03942f13b863812872 = $(`<div id="html_abb2c91305858c03942f13b863812872" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #f7c948; margin-bottom: 5px;">             Kano, Nigeria         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>5.973 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Sahel</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#3 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_c6982b40b31b78e34d781457146db15b.setContent(html_abb2c91305858c03942f13b863812872);
+            
+        
+
+        circle_marker_b3fd8065f4115346e71762a6c3aa461a.bindPopup(popup_c6982b40b31b78e34d781457146db15b)
+        ;
+
+        
+    
+    
+            circle_marker_b3fd8065f4115346e71762a6c3aa461a.bindTooltip(
+                `<div>
+                     Kano — 5.97 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f0a36c55044f55af15763f861576ebf6 = L.marker(
+                [12.0022, 8.592],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_8470036fe983767cd93ee77e8698956e = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eKano\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_f0a36c55044f55af15763f861576ebf6.setIcon(div_icon_8470036fe983767cd93ee77e8698956e);
+            
+    
+            var circle_marker_efe68615f47dc0f56332408beac5eca7 = L.circleMarker(
+                [6.5244, 3.3792],
+                {"bubblingMouseEvents": true, "color": "#0099ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0099ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.735999999999997, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_dec85b2edc273496c0d76235c2e6f34f = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_181455e51d85d437df92b0dea25b5d69 = $(`<div id="html_181455e51d85d437df92b0dea25b5d69" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #0099ff; margin-bottom: 5px;">             Lagos, Nigeria         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>4.592 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Coastal Humid</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#17 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_dec85b2edc273496c0d76235c2e6f34f.setContent(html_181455e51d85d437df92b0dea25b5d69);
+            
+        
+
+        circle_marker_efe68615f47dc0f56332408beac5eca7.bindPopup(popup_dec85b2edc273496c0d76235c2e6f34f)
+        ;
+
+        
+    
+    
+            circle_marker_efe68615f47dc0f56332408beac5eca7.bindTooltip(
+                `<div>
+                     Lagos — 4.59 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_0cf93d49d132d59da512bba17012ea68 = L.marker(
+                [6.5244, 3.3792],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_01e5f520d15a2c94896ea8ec5fafd686 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eLagos\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_0cf93d49d132d59da512bba17012ea68.setIcon(div_icon_01e5f520d15a2c94896ea8ec5fafd686);
+            
+    
+            var circle_marker_be4d9ba602adc50169a9aafca7828731 = L.circleMarker(
+                [6.1375, 1.2123],
+                {"bubblingMouseEvents": true, "color": "#0099ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0099ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.695999999999998, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_a7f3b0c917a8d91bd8d51fc8f6097f5e = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_40aa7fb75e83502fea9e8175a0bc35ab = $(`<div id="html_40aa7fb75e83502fea9e8175a0bc35ab" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #0099ff; margin-bottom: 5px;">             Lome, Togo         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>4.837 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Coastal Humid</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#14 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_a7f3b0c917a8d91bd8d51fc8f6097f5e.setContent(html_40aa7fb75e83502fea9e8175a0bc35ab);
+            
+        
+
+        circle_marker_be4d9ba602adc50169a9aafca7828731.bindPopup(popup_a7f3b0c917a8d91bd8d51fc8f6097f5e)
+        ;
+
+        
+    
+    
+            circle_marker_be4d9ba602adc50169a9aafca7828731.bindTooltip(
+                `<div>
+                     Lome — 4.84 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_10d97fd25a7941e43f93357aaac455b1 = L.marker(
+                [6.1375, 1.2123],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_4730671173cc5bdadc91e5e9f7d3d64d = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eLome\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_10d97fd25a7941e43f93357aaac455b1.setIcon(div_icon_4730671173cc5bdadc91e5e9f7d3d64d);
+            
+    
+            var circle_marker_be07c910da1ddadc09aa0d47f774bb89 = L.circleMarker(
+                [6.2907, -10.7605],
+                {"bubblingMouseEvents": true, "color": "#0099ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#0099ff", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.536000000000001, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_94b2615b65d782b94ce2512898cfc443 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_2d994c71b3d3b62ddeedebcef2026ca3 = $(`<div id="html_2d994c71b3d3b62ddeedebcef2026ca3" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #0099ff; margin-bottom: 5px;">             Monrovia, Liberia         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>4.567 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Coastal Humid</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#18 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_94b2615b65d782b94ce2512898cfc443.setContent(html_2d994c71b3d3b62ddeedebcef2026ca3);
+            
+        
+
+        circle_marker_be07c910da1ddadc09aa0d47f774bb89.bindPopup(popup_94b2615b65d782b94ce2512898cfc443)
+        ;
+
+        
+    
+    
+            circle_marker_be07c910da1ddadc09aa0d47f774bb89.bindTooltip(
+                `<div>
+                     Monrovia — 4.57 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2688c4920c71ea61092544634152ffa8 = L.marker(
+                [6.2907, -10.7605],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_5d93e70c133e3f0f81f3884828a29610 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eMonrovia\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_2688c4920c71ea61092544634152ffa8.setIcon(div_icon_5d93e70c133e3f0f81f3884828a29610);
+            
+    
+            var circle_marker_3f5b1e411ca73a676ce41ebd6e386cfa = L.circleMarker(
+                [13.5137, 2.1098],
+                {"bubblingMouseEvents": true, "color": "#f7c948", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f7c948", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 16.415999999999997, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_202d4ef46e0795e30267c39e66ce58d2 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_fcf31f5c2fc8044f4767303974daa118 = $(`<div id="html_fcf31f5c2fc8044f4767303974daa118" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #f7c948; margin-bottom: 5px;">             Niamey, Niger         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>6.052 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Sahel</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#2 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_202d4ef46e0795e30267c39e66ce58d2.setContent(html_fcf31f5c2fc8044f4767303974daa118);
+            
+        
+
+        circle_marker_3f5b1e411ca73a676ce41ebd6e386cfa.bindPopup(popup_202d4ef46e0795e30267c39e66ce58d2)
+        ;
+
+        
+    
+    
+            circle_marker_3f5b1e411ca73a676ce41ebd6e386cfa.bindTooltip(
+                `<div>
+                     Niamey — 6.05 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_c4ee80f13803cb2cc12dc0eddbea9545 = L.marker(
+                [13.5137, 2.1098],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_f2aa4d759d78b87d2b0af606e33377df = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eNiamey\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_c4ee80f13803cb2cc12dc0eddbea9545.setIcon(div_icon_f2aa4d759d78b87d2b0af606e33377df);
+            
+    
+            var circle_marker_d80bf5ad4ac82425fedccd6e44ccd772 = L.circleMarker(
+                [18.0735, -15.9582],
+                {"bubblingMouseEvents": true, "color": "#ff6b35", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff6b35", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 18.328000000000003, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_466177b75cdbc9576e73d270c579b5ff = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_6ec313ecec4e68aea95cd64ccfeade89 = $(`<div id="html_6ec313ecec4e68aea95cd64ccfeade89" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #ff6b35; margin-bottom: 5px;">             Nouakchott, Mauritania         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>6.291 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Desert/Arid</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#1 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_466177b75cdbc9576e73d270c579b5ff.setContent(html_6ec313ecec4e68aea95cd64ccfeade89);
+            
+        
+
+        circle_marker_d80bf5ad4ac82425fedccd6e44ccd772.bindPopup(popup_466177b75cdbc9576e73d270c579b5ff)
+        ;
+
+        
+    
+    
+            circle_marker_d80bf5ad4ac82425fedccd6e44ccd772.bindTooltip(
+                `<div>
+                     Nouakchott — 6.29 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_e9335bc7d36e487c91e05f1ff60fd32a = L.marker(
+                [18.0735, -15.9582],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_75482daa3f65de577dd7d97f999b2edf = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eNouakchott\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_e9335bc7d36e487c91e05f1ff60fd32a.setIcon(div_icon_75482daa3f65de577dd7d97f999b2edf);
+            
+    
+            var circle_marker_f9dfc7aade590c4db931ac57ac7f8002 = L.circleMarker(
+                [12.3647, -1.5332],
+                {"bubblingMouseEvents": true, "color": "#f7c948", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f7c948", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.576, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_46d0a98d8fa0eed990ad2194be375255 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_e543987794b0f5940f420611963c1bbf = $(`<div id="html_e543987794b0f5940f420611963c1bbf" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #f7c948; margin-bottom: 5px;">             Ouagadougou, Burkina Faso         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>5.822 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Sahel</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#5 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_46d0a98d8fa0eed990ad2194be375255.setContent(html_e543987794b0f5940f420611963c1bbf);
+            
+        
+
+        circle_marker_f9dfc7aade590c4db931ac57ac7f8002.bindPopup(popup_46d0a98d8fa0eed990ad2194be375255)
+        ;
+
+        
+    
+    
+            circle_marker_f9dfc7aade590c4db931ac57ac7f8002.bindTooltip(
+                `<div>
+                     Ouagadougou — 5.82 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_86d5b7774b6023c64437734204f7828b = L.marker(
+                [12.3647, -1.5332],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_983c1fad2267784cb4d1513bcfaa0b46 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003eOuagadougou\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_86d5b7774b6023c64437734204f7828b.setIcon(div_icon_983c1fad2267784cb4d1513bcfaa0b46);
+            
+    
+            var circle_marker_3b95897ca294acdcb7cad8153a1c9ce5 = L.circleMarker(
+                [14.9331, -23.5133],
+                {"bubblingMouseEvents": true, "color": "#ff6b35", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff6b35", "fillOpacity": 0.8, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.112000000000002, "stroke": true, "weight": 3}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+        var popup_debf7f3baf06bab41802a57406e85854 = L.popup({
+  "maxWidth": 220,
+});
+
+        
+            
+                var html_d416ee05f1700a6f153a149bddde9f05 = $(`<div id="html_d416ee05f1700a6f153a149bddde9f05" style="width: 100.0%; height: 100.0%;">     <div style="font-family: Arial; width: 200px;">         <h4 style="color: #ff6b35; margin-bottom: 5px;">             Praia, Cape Verde         </h4>         <table style="width:100%; font-size:13px;">             <tr>                 <td><b>Annual GHI</b></td>                 <td>5.889 kWh/m²/day</td>             </tr>             <tr>                 <td><b>Climate Zone</b></td>                 <td>Desert/Arid</td>             </tr>             <tr>                 <td><b>Solar Rank</b></td>                 <td>#4 of 18</td>             </tr>         </table>     </div>     </div>`)[0];
+                popup_debf7f3baf06bab41802a57406e85854.setContent(html_d416ee05f1700a6f153a149bddde9f05);
+            
+        
+
+        circle_marker_3b95897ca294acdcb7cad8153a1c9ce5.bindPopup(popup_debf7f3baf06bab41802a57406e85854)
+        ;
+
+        
+    
+    
+            circle_marker_3b95897ca294acdcb7cad8153a1c9ce5.bindTooltip(
+                `<div>
+                     Praia — 5.89 kWh/m²/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_4b72e5e8169ed771f69e94b3e3700b0d = L.marker(
+                [14.9331, -23.5133],
+                {
+}
+            ).addTo(map_4af2f4b8aae1538d49c6afc1ee3031ff);
+        
+    
+            var div_icon_3c011ccdda857940c16a09b236750efa = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:9px; font-weight:bold; color:#333; white-space:nowrap;\"\u003ePraia\u003c/div\u003e",
+  "iconSize": [80, 20],
+  "iconAnchor": [0, 0],
+  "className": "empty",
+});
+        
+    
+                marker_4b72e5e8169ed771f69e94b3e3700b0d.setIcon(div_icon_3c011ccdda857940c16a09b236750efa);
+            
+</script>
+</html>
