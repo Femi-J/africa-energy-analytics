@@ -1,5 +1,6 @@
 # Africa-energy-analytics
 **Turning Africa's Energy Data into Decisions**
+
 This repo hosts a growing portfolio of data analysis projects exploring solar potential, electricity access, grid performance, and sustainability across Africa.
 
 [![GitHub](https://img.shields.io/badge/GitHub-Femi--J-181717?logo=github)](https://github.com/Femi-J)
