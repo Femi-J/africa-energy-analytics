@@ -1,12 +1,18 @@
-# Africa-energy-analytics
-**Turning Africa's Energy Data into Decisions**
+# Africa Energy Analytics Portfolio
 
-This repo hosts a growing portfolio of data analysis projects exploring solar potential, electricity access, grid performance, and sustainability across Africa.
+> **Turning Africa's Energy Data into Decisions**
+
+A growing portfolio of data analysis projects exploring solar potential, electricity access, grid performance, and sustainability across Africa.
+
+Built by **Olufemi Akintunde** — Energy & Sustainability Data Analyst | Renewable Energy Expert | Python · Power BI · MySQL
 
 [![GitHub](https://img.shields.io/badge/GitHub-Femi--J-181717?logo=github)](https://github.com/Femi-J)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Olufemi_Akintunde-0077B5?logo=linkedin)](https://www.linkedin.com/in/olufemi-akintunde-0540a144)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Olufemi_Akintunde-0077B5?logo=linkedin)](https://www.linkedin.com/in//in/olufemi-akintunde-0540a144)
+
+---
 
 ## 🗂️ Projects
+
 ### 1. West Africa Electricity Access Analysis
 **Tools:** Python · Pandas · Matplotlib · Seaborn  
 **Data:** World Bank Electricity Access Indicators (2020–2023)  
@@ -27,6 +33,7 @@ it in desert zones, a non-uniform regional effect.
 📊 [Charts](reports/)
 
 ---
+
 ### 3. Solar Irradiance Time Series Analysis
 **Tools:** Python · Pandas · Matplotlib · SciPy  
 **Data:** NASA POWER (2014–2025) across 5 cities  
@@ -36,6 +43,7 @@ it in desert zones, a non-uniform regional effect.
 📊 [Charts](reports/)
 
 ---
+
 ### 4. Geospatial Energy Maps
 **Tools:** Python · Folium · GeoPandas  
 **Data:** NASA POWER + World Bank  
@@ -45,6 +53,7 @@ it in desert zones, a non-uniform regional effect.
 🗺️ [Interactive Map](reports/west_africa_solar_energy_map.html)
 
 ---
+
 ### 5. MySQL Energy Database
 **Tools:** Python · MySQL 8.0 · mysql-connector-python  
 **Data:** 2,574 solar records · 16 countries · 3 tables  
@@ -53,6 +62,7 @@ it in desert zones, a non-uniform regional effect.
 📓 [Notebook](notebooks/energy_database_mysql.ipynb)
 
 ---
+
 ### 6. Power BI Energy Dashboard
 **Tools:** Power BI Desktop · DAX  
 **Data:** NASA POWER + World Bank  
@@ -61,6 +71,7 @@ it in desert zones, a non-uniform regional effect.
 📊 [Dashboard File](PowerBI/West%20Africa%20solar%20dashboard.pbix)
 
 ---
+
 ### 7. Plotly Interactive Charts & Dash App
 **Tools:** Python · Plotly Express · Plotly Dash  
 **Data:** NASA POWER (2014–2025)  
@@ -70,14 +81,20 @@ it in desert zones, a non-uniform regional effect.
 📊 [Interactive Charts](reports/)
 
 ---
+
 ## 🔬 Research Paper
 
-**Seasonal Solar Irradiance Variability and Harmattan Effects Across West African Climate Zones: Evidence from NASA POWER Satallite Data across 18 cities**
+**Seasonal Solar Irradiance Variability and Harmattan Effects 
+Across West African Climate Zones**
+
 Preprint submitted to AfricArXiv via ScienceOpen (May 2026).  
+Target journal: *Energy for Sustainable Development* (Elsevier)
 
 Key finding: The Harmattan effect on solar irradiance is **non-uniform** across West Africa, enhancing GHI in Coastal Humid (+0.574 kWh/m²/day) and Savanna (+0.771 kWh/m²/day) zones while suppressing it in Desert/Arid zones (-1.059 kWh/m²/day).
 
 🔒 [Research Repo](https://github.com/Femi-J/west-africa-solar-research)
+
+---
 
 ## 🛠️ Tools & Technologies
 
@@ -92,9 +109,18 @@ Key finding: The Harmattan effect on solar irradiance is **non-uniform** across 
 | Statistics | Mann-Whitney U · Kruskal-Wallis · Mann-Kendall |
 | Environment | Jupyter Notebook · Anaconda · VS Code |
 | Version Control | Git · GitHub |
+
 ---
-## Projects
-*(Projects will be listed here as they are completed)*
+
+## 📁 Repository Structure
+africa-energy-analytics/
+│
+├── data/                  ← Raw and cleaned datasets
+├── notebooks/             ← Jupyter notebooks (analysis)
+├── reports/               ← Charts, maps, HTML exports
+├── PowerBI/               ← Power BI dashboard files
+└── scripts/               ← Reusable Python scripts
+---
 
 ## 📊 Data Sources
 
@@ -117,3 +143,5 @@ Energy & Sustainability Data Analyst | Renewable Energy Expert
 - 🔬 ORCID: [0009-0006-1174-9289](https://orcid.org/0009-0006-1174-9289)
 - 📍 Abuja, Nigeria
 - 💼 Open to consulting engagements and collaborations
+
+---
